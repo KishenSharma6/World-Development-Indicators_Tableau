@@ -1,0 +1,6 @@
+#Raw files are too large
+Raw_Data/
+
+#Not necessary for GitHub
+.ipynb_checkpoints/
+To Do.txt
