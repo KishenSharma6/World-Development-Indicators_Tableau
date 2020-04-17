@@ -11,15 +11,7 @@ In the following markdown file, I will be cleaning the World Development Indicat
 Raw data, which has been last updated on 4/9/2020, can be found here from the [World Bank group](https://datacatalog.worldbank.org/dataset/world-development-indicators)
 
 # Data Preview
-```{r}
-#Set working directory
-##knitr::opts_knit
-work_dir <- "C:/Users/kishe/Documents/Data Science/Projects/Tableau/Makeover Monday/World Development Indicators"
 
-setwd(work_dir)
-
-list.files()
-```
 ### Read in libraries
 ```{r echo=TRUE, results='hide'}
 #Read in libraries
@@ -27,18 +19,40 @@ library(tidyverse)
 ```
 
 ### Read in Data
-```{r}
-#Read in raw data
-list.files()
+```{r echo=FALSE}
+#Set working directory to Raw_Data
+setwd("C:/Users/kishe/Documents/Data Science/Projects/Tableau/Makeover Monday/World Development Indicators/Raw_Data")
+
+#Read in csv as dfand convert to tibble
+df <- read.csv('WDIData.csv')
+as_tibble(df)
+
 ```
 
 
+# Data Cleaning
+### 1.Columns
+**Drop Columns**
 ```{r}
-getwd()
+#Drop Indicator.Code column
+df <- subset(df, select = -c(Indicator.Code, X))
 ```
 
+**Rename Headers**
+```{r}
+#Drop X in front of years columns
+names(df) <- sub('X','',names(df))
+
+#Check
+head(df)
+```
+
+### 2. Data Wrangling
+**Gather**
 
 ```{r}
+#df %>% gather('1960':'2019', key = 'year', value = '')
+
 ```
 *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
 
