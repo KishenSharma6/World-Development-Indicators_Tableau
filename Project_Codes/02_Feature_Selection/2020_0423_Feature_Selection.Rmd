@@ -15,7 +15,7 @@ library(tidyverse)
 setwd("C:/Users/kishe/Documents/Data Science/Projects/Tableau/Makeover Monday/World Development Indicators/Data/02_Cleaned_Data/")
 
 #Read in Data
-df <- read.csv("20200420_Cleaned_WDICountry.csv")
+df <- read.csv("20200424_Cleaned_WDIData.csv", header=TRUE)
 df <- as_tibble(df)
 ```
 
@@ -23,7 +23,6 @@ Preview data
 ```{r}
 #View data
 head(df)
-
 ```
 
 Subset columns of interest pertaining to access(to resources like electricity), income, human capital income(HCI), life, literacy, population, renewable, school, poverty, satisfaction
@@ -33,11 +32,10 @@ df %>%
 ```
 
 
-
 ```{r}
-
-
-head(df)
+df %>% 
+  select(contains('life'))
 ```
+
 
 
