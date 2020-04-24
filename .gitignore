@@ -1,5 +1,5 @@
 #Raw files are too large
-Raw_Data/
+Data/
 
 #Not necessary for GitHub
 .ipynb_checkpoints/
