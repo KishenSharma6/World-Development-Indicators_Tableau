@@ -5,7 +5,7 @@ output: html_notebook
 
 # Introduction
 
-In the following markdown file, I will be cleaning the World Development Indicators data set in preparation for a visualization in Tableau. This data contains presents the most current and accurate global development data available, and includes national, regional and global estimates.
+In the following markdown file, I will be cleaning the World Development Indicators data set in preparation for a visualization in Tableau. This data presents the most current and accurate global development data available, and includes national, regional and global estimates.
 
 
 Raw data, which has been last updated on 4/9/2020, can be found here from the [World Bank group](https://datacatalog.worldbank.org/dataset/world-development-indicators)
@@ -18,17 +18,20 @@ Raw data, which has been last updated on 4/9/2020, can be found here from the [W
 library(tidyverse)
 ```
 
-### Read in Data
-```{r echo=FALSE}
+### Preview Data
+```{r include=FALSE}
 #Set working directory to Raw_Data
-setwd("C:/Users/kishe/Documents/Data Science/Projects/Tableau/Makeover Monday/World Development Indicators/Raw_Data")
+setwd("C:/Users/kishe/Documents/Data Science/Projects/Tableau/Makeover Monday/World Development Indicators/Data/01_Raw_Data")
 
-#Read in csv as dfand convert to tibble
+#Read in csv as df and convert to tibble
 df <- read.csv('WDIData.csv')
-as_tibble(df)
+df <- as_tibble(df)
 
 ```
-
+```{r}
+#Display head
+head(df)
+```
 
 # Data Cleaning
 ### 1.Columns
@@ -38,24 +41,37 @@ as_tibble(df)
 df <- subset(df, select = -c(Indicator.Code, X))
 ```
 
-**Rename Headers**
+**Edit Headers**
 ```{r}
 #Drop X in front of years columns
 names(df) <- sub('X','',names(df))
+
+#Rename ï..Country.Name
+df <- df %>% 
+  rename('Country.Name' = 'ï..Country.Name')
 
 #Check
 head(df)
 ```
 
 ### 2. Data Wrangling
-**Gather**
+**Gather years and spread Indicator.Name**
 
 ```{r}
-#df %>% gather('1960':'2019', key = 'year', value = '')
+#Apply gather and spread to make data tidy
+cleaned_df <- df %>% 
+  gather('1960':'2019', key = 'Year', value = 'value') %>% 
+  spread(key = 'Indicator.Name', value = 'value')
 
+#Check
+head(cleaned_df)
 ```
-*Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
 
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+```{r include=FALSE}
+#Set WD to write cleaned_df file
+setwd("C:/Users/kishe/Documents/Data Science/Projects/Tableau/Makeover Monday/World Development Indicators/Data/02_Cleaned_Data")
 
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+#Write file to csv
+write.csv(cleaned_df, "20200424_Cleaned_WDIData.csv")
+```
+
