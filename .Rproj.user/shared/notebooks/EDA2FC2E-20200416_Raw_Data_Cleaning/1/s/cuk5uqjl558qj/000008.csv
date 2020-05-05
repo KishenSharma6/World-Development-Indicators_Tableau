@@ -1,7 +1,0 @@
-"0","#Set working directory to Raw_Data"
-"0","setwd(""C:/Users/kishe/Documents/Data Science/Projects/Tableau/Makeover Monday/World Development Indicators/Data/01_Raw_Data"")"
-"2","The working directory was changed to C:/Users/kishe/Documents/Data Science/Projects/Tableau/Makeover Monday/World Development Indicators/Data/01_Raw_Data inside a notebook chunk. The working directory will be reset when the chunk is finished running. Use the knitr root.dir option in the setup chunk to change the working directory for notebook chunks."
-"0","#Read in csv as df and convert to tibble"
-"0","df <- read.csv('WDIData.csv')"
-"0","df <- as_tibble(df)"
-"0",""

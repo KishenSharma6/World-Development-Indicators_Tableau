@@ -1,5 +1,0 @@
-"0","#Set WD to write cleaned_df file"
-"0","setwd(""C:/Users/kishe/Documents/Data Science/Projects/Tableau/Makeover Monday/World Development Indicators/Data/02_Cleaned_Data"")"
-"2","The working directory was changed to C:/Users/kishe/Documents/Data Science/Projects/Tableau/Makeover Monday/World Development Indicators/Data/02_Cleaned_Data inside a notebook chunk. The working directory will be reset when the chunk is finished running. Use the knitr root.dir option in the setup chunk to change the working directory for notebook chunks."
-"0","#Write file to csv"
-"0","write.csv(cleaned_df, ""20200424_Cleaned_WDIData.csv"")"

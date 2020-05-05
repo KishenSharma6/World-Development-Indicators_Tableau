@@ -1,2 +1,0 @@
-"0","#Drop Indicator.Code column"
-"0","df <- subset(df, select = -c(Indicator.Code, X))"
