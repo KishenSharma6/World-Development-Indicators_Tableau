@@ -1,0 +1,7 @@
+"0","#Apply gather and spread to make data tidy"
+"0","cleaned_df <- df %>% "
+"0","  gather('1960':'2019', key = 'Year', value = 'value') %>% "
+"0","  spread(key = 'Indicator.Name', value = 'value')"
+"0",""
+"0","#Check"
+"0","head(cleaned_df)"

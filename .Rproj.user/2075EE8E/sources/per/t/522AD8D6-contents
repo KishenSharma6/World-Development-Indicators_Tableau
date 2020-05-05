@@ -1,0 +1,41 @@
+---
+title: "Feature Selection"
+author: "Kishen Sharma"
+date: "4/23/2020"
+output: html_document
+---
+
+```{r}
+#Read in libraries
+library(tidyverse)
+```
+
+```{r include=FALSE}
+#Set wd 
+setwd("C:/Users/kishe/Documents/Data Science/Projects/Tableau/Makeover Monday/World Development Indicators/Data/02_Cleaned_Data/")
+
+#Read in Data
+df <- read.csv("20200424_Cleaned_WDIData.csv", header=TRUE)
+df <- as_tibble(df)
+```
+
+Preview data
+```{r}
+#View data
+head(df)
+```
+
+Subset columns of interest pertaining to access(to resources like electricity), income, human capital income(HCI), life, literacy, population, renewable, school, poverty, satisfaction
+```{r}
+df %>%
+  select(contains("wom"))
+```
+
+
+```{r}
+df %>% 
+  select(contains('life'))
+```
+
+
+
